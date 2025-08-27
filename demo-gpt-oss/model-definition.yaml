@@ -1,0 +1,31 @@
+models:
+  - name: "demo-gpt-oss"
+    model_path: '/models/models--openai--gpt-oss-120b'
+    service:
+      pre_start_actions:
+        - action: run_command
+          args:
+            command:
+              - pip3
+              - install
+              - --upgrade
+              - vllm
+      start_command:
+        - python
+        - -m
+        - vllm.entrypoints.openai.api_server
+        - --model
+        - /models/models--openai--gpt-oss-120b/snapshots/8b193b0ef83bd41b40eb71fee8f1432315e02a3e
+        - --served-model-name
+        - gpt-oss-120b
+        - --tensor-parallel-size
+        - "1"
+        - --host
+        - "0.0.0.0"
+        - --port
+        - "8000"
+      port: 8000
+      health_check:
+        path: /v1/models
+        max_retries: 10
+      
