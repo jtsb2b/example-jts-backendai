@@ -1,0 +1,31 @@
+models:
+  - name: "demo-vllm"
+    model_path: '/models/gemma-3-1b-it'
+    service:
+      pre_start_actions:
+        - action: run_command
+          args:
+            command:
+              - pip3
+              - install
+              - --upgrade
+              - vllm
+      start_command:
+        - python
+        - -m
+        - vllm.entrypoints.openai.api_server
+        - --model
+        - /models/gemma-3-1b-it
+        - --served-model-name
+        - gemma-3-1b-it
+        - --tensor-parallel-size
+        - "1"
+        - --host
+        - "0.0.0.0"
+        - --port
+        - "8000"
+      port: 8000
+      health_check:
+        path: /v1/models
+        max_retries: 10
+      
