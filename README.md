@@ -31,7 +31,7 @@ This section will guide you through deploying a simple FastAPI application.
 1.  **Service Name**: Give your service a descriptive name, such as `demo-fastapi`.
 2.  **Model Storage To Mount**: Select a model storage to mount.
 3.  **Inference Runtime Variant**: Set inference runtime to `Custom`.
-4.  **Environments / Version**: Select environment image. For FastAPI, a general Python 3.12+ image (e.g., `bai-repo:7080/bai/ngc-pytorch:25.01-pytorch2.6-py312-cuda12.8@x86_64`).
+4.  **Environments / Version**: Select environment image. For FastAPI, a general Python 3.12+ image (e.g., `<jts_docker_image_registry_url>/bai/ngc-pytorch:25.01-pytorch2.6-py312-cuda12.8@x86_64`).
 3.  **Resources**: Allocate the necessary CPU (`2 core`), Memory (`4 GB`), and GPU (`0 FGPU`) resources for your application. For a simple FastAPI demo, minimal resources are often enough.
 
 ### Step 3: Launch and Test
@@ -52,7 +52,7 @@ This section covers deploying large language models like `demo-gpt-oss` and `dem
 2.  **Service Name**: `demo-gpt-oss` or `demo-gemma3-1b`.
 3.  **Model Storage To Mount**: Select a model storage to mount.
 4.  **Inference Runtime Variant**: Set inference runtime to `Custom`.
-5.  **Environments / Version**: Select a vllm 0.6.2 environment image. (e.g., `bai-repo:7080/bai/vllm:0.6.2-cuda12.1-ubuntu22.04@x86_64`).
+5.  **Environments / Version**: Select a vllm 0.6.2 environment image. (e.g., `<jts_docker_image_registry_url>/bai/vllm:0.6.2-cuda12.1-ubuntu22.04@x86_64`).
 4.  **Resources**: **Crucially, you must allocate a GPU.** The amount of GPU memory depends on the size of the model you are deploying.
 
 ### Step 2: Launch and Test the LLM Service
